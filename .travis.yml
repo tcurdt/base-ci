@@ -1,0 +1,26 @@
+language: c
+os: osx
+
+before_script:
+  - brew update && brew install hugo
+
+script:
+  - make
+
+branches:
+  only:
+    - master
+
+notifications:
+  email: false
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: public
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
+  repo: tcurdt/base-ci
+  target_branch: master
+  # fqdn: vafer.org
