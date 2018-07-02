@@ -3,21 +3,21 @@
 : "${EMAIL:?EMAIL is mising}"
 : "${SSH_PRIVATE_KEY:?SSH_PRIVATE_KEY is mising}"
 
-git config --global user.name "Travis CI"
-git config --global user.email "$EMAIL"
-
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
 cat > ~/.ssh/config <<EOL
 Host *
   StrictHostKeyChecking no
 EOL
-cat ~/.ssh/config
 
 eval "$(ssh-agent -s)"
 
-echo "adding key"
-echo "$SSH_PRIVATE_KEY" | base64 --decode | ssh-add - > /dev/null
+echo "$SSH_PRIVATE_KEY" | base64 --decode | ssh-add -
+
+git config --global user.name "Travis CI"
+git config --global user.email "$EMAIL"
+
+ssh -T git@github.com || exit 0
 
 # echo "$SSH_PRIVATE_KEY" | base64 --decode > foo
 # chmod 600 foo
@@ -31,7 +31,3 @@ echo "$SSH_PRIVATE_KEY" | base64 --decode | ssh-add - > /dev/null
 # echo "$SSH_PRIVATE_KEY" | base64 --decode > .ssh/travis
 # chmod 600 .ssh/travis
 # ssh-add .ssh/travis
-
-echo "checking key"
-ssh -T git@github.com
-# ssh -i .ssh/travis -T git@github.com
