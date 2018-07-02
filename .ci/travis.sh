@@ -12,7 +12,9 @@ echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
 eval "$(ssh-agent -s)"
 
-echo "adding key"
+echo "$SSH_PRIVATE_KEY" | tr -d '\r' > foo
+ssh-keygen -y -f foo
+
 echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
 # echo "$SSH_PRIVATE_KEY" | base64 --decode | ssh-add - > /dev/null
 # echo "$SSH_PRIVATE_KEY" | base64 --decode > .ssh/travis
