@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+set -x
 
 SRC=$1
 USR=$2
@@ -9,6 +11,8 @@ URI=https://${GITHUB_PERSONAL_ACCESS_TOKEN}@github.com/${REP}.git
 DST=.tmp
 
 # if [ "`git branch -a | grep gh-pages`" != "" ]; then
+
+echo "NOW"
 
   rm -rf $DST
   git co --orphan gh-pages -- $DST
