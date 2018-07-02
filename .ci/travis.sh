@@ -9,6 +9,7 @@ git config --global user.email "$EMAIL"
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
 echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+cat ~/.ssh/config
 
 eval "$(ssh-agent -s)"
 
