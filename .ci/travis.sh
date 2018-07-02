@@ -12,11 +12,13 @@ echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
 eval "$(ssh-agent -s)"
 
-echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+echo "adding key"
+echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
 # echo "$SSH_PRIVATE_KEY" | base64 --decode | ssh-add - > /dev/null
 # echo "$SSH_PRIVATE_KEY" | base64 --decode > .ssh/travis
 # chmod 600 .ssh/travis
 # ssh-add .ssh/travis
 
+echo "checking key"
 ssh -T git@github.com
 # ssh -i .ssh/travis -T git@github.com
