@@ -1,8 +1,6 @@
 #!/bin/bash
 
 BASE=$(dirname $0)
-SHA=`git rev-parse HEAD 2>/dev/null` || { echo "no git repo"; exit 1; }
-TAG=`git describe --exact-match $SHA 2>/dev/null` || { echo "not a tag"; exit 2; }
 
 if [ "$CI" == "true" ]; then
   echo "continous integration"
@@ -18,13 +16,16 @@ SRC=public
 # URI=https://tcurdt:${BITBUCKET_APP_PASSWORD}@bitbucket.org/tcurdt/deploy-test.git
 # URI=https://tcurdt:${GITLAB_PERSONAL_ACCESS_TOKEN}@gitlab.com/tcurdt/deploy-test.git
 
-$BASE/deploy-github-pages $SRC tcurdt tcurdt/deploy-test
+$BASE/deploy-github-pages $SRC tcurdt hazelfin/deploy-test
 # $BASE/deploy-github       $SRC tcurdt hazelfin/deploy-test
 # $BASE/deploy-gitlab       $SRC tcurdt tcurdt/deploy-test
 # $BASE/deploy-bitbucket    $SRC tcurdt tcurdt/deploy-test
 # $BASE/deploy-s3           $SRC deploy-7d50e3
 
 SRC=dist
+
+# SHA=`git rev-parse HEAD 2>/dev/null` || { echo "no git repo"; exit 1; }
+# TAG=`git describe --exact-match $SHA 2>/dev/null` || { echo "not a tag"; exit 2; }
 
 # $BASE/deploy-github-releases -v $TAG $SRC/*.tgz
 # $BASE/deploy-homebrew        -v $TAG $SRC/*.tgz
