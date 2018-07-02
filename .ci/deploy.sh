@@ -16,7 +16,7 @@ SRC=public
 # URI=https://tcurdt:${BITBUCKET_APP_PASSWORD}@bitbucket.org/tcurdt/deploy-test.git
 # URI=https://tcurdt:${GITLAB_PERSONAL_ACCESS_TOKEN}@gitlab.com/tcurdt/deploy-test.git
 
-$BASE/deploy-github-pages $SRC tcurdt hazelfin/deploy-test
+# $BASE/deploy-github-pages $SRC tcurdt hazelfin/deploy-test
 # $BASE/deploy-github       $SRC tcurdt hazelfin/deploy-test
 # $BASE/deploy-gitlab       $SRC tcurdt tcurdt/deploy-test
 # $BASE/deploy-bitbucket    $SRC tcurdt tcurdt/deploy-test

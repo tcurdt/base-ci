@@ -1,3 +1,4 @@
 .credentials
+.ci/ssh
 public
 dist
