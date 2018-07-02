@@ -14,7 +14,9 @@ eval "$(ssh-agent -s)"
 
 echo "$SSH_PRIVATE_KEY" | tr -d '\r' > foo
 chmod 600 foo
+echo "keygen"
 ssh-keygen -y -f foo
+echo "add"
 ssh-add foo
 
 # echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
