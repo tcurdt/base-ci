@@ -1,6 +1,6 @@
 generate a ssh key
 
-    mkdir -p .ci/ssh && ssh-keygen -t rsa -b 4096 -C "ci@vafer.org" -f .ci/ssh/ci -N ''
+    mkdir -p .ci/ssh && ssh-keygen -t rsa -b 4096 -C "ci@vafer.org" -N '' -f .ci/ssh/ci
 
 add `.ci/ssh/ci.pub` to github/gitlab/bitbucket
 
