@@ -28,6 +28,7 @@ git commit -m "deploy"
 git push $URI
 cd -
 
+rm -rf $DST
 
 # if [ "`git branch -a | grep gh-pages`" != "" ]; then
 
