@@ -1,10 +1,10 @@
-# language: c
 # os: osx
 os: linux
+# language: c
 
-env:
-  global:
-    - EMAIL=ci@vafer.org
+# env:
+#   global:
+#     - EMAIL=ci@vafer.org
 
 before_install:
   - .ci/travis.sh
