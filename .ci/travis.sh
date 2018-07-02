@@ -12,7 +12,7 @@ echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
 eval "$(ssh-agent -s)"
 
-echo "$SSH_PRIVATE_KEY" | tr -d '\r' > foo
+echo "$SSH_PRIVATE_KEY" | base64 --decode > foo
 chmod 600 foo
 echo "keygen"
 ssh-keygen -y -f foo
