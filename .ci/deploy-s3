@@ -1,0 +1,15 @@
+#!/bin/sh
+
+SRC=$1
+BCK=$2
+
+aws s3 sync $SRC/ s3://${BCK}/
+
+# aws s3 cp --recursive $SRC/ s3://${BCK}/
+
+# s3cmd put --recursive \
+#   --access_key=$AWS_ACCESS_KEY_ID \
+#   --secret_key=$AWS_SECRET_ACCESS_KEY \
+#   $SRC/ \
+#   s3://${BCK}/
+

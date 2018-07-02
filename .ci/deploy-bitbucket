@@ -1,0 +1,11 @@
+#!/bin/sh
+
+BASE=$(dirname $0)
+
+SRC=$1
+USR=$2
+REP=$3
+
+URI=https://${USR}:${BITBUCKET_APP_PASSWORD}@bitbucket.org/${REP}.git
+
+$BASE/deploy-git $SRC $URI

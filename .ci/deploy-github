@@ -1,0 +1,11 @@
+#!/bin/sh
+
+BASE=$(dirname $0)
+
+SRC=$1
+USR=$2
+REP=$3
+
+URI=https://${GITHUB_PERSONAL_ACCESS_TOKEN}@github.com/${REP}.git
+
+$BASE/deploy-git $SRC $URI

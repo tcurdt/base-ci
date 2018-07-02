@@ -18,4 +18,4 @@ dist/$(NAME)-$(VERSION).tgz: public/index.html
 
 .PHONY: deploy
 deploy: all
-	@./scripts/deploy.sh
+	@./.ci/deploy.sh

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+SRC=$1
+URI=$2
+DST=.tmp
+
+rm -rf $DST
+git clone $URI $DST
+cp -r $SRC/ $DST
+cd $DST
+git add --all
+git commit -m "deploy"
+git push $URI
+cd -
+rm -rf $DST
