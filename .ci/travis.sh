@@ -8,17 +8,23 @@ git config --global user.email "$EMAIL"
 
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
-echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+cat > ~/.ssh/config <<EOL
+Host *
+  StrictHostKeyChecking no
+EOL
 cat ~/.ssh/config
 
 eval "$(ssh-agent -s)"
 
-echo "$SSH_PRIVATE_KEY" | base64 --decode > foo
-chmod 600 foo
-echo "keygen"
-ssh-keygen -y -f foo
-echo "add"
-ssh-add foo
+echo "adding key"
+echo "$SSH_PRIVATE_KEY" | base64 --decode | ssh-add - > /dev/null
+
+# echo "$SSH_PRIVATE_KEY" | base64 --decode > foo
+# chmod 600 foo
+# echo "keygen"
+# ssh-keygen -y -f foo
+# echo "add"
+# ssh-add foo
 
 # echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
 # echo "$SSH_PRIVATE_KEY" | base64 --decode | ssh-add - > /dev/null
