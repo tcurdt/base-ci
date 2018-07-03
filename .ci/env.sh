@@ -9,10 +9,12 @@ fi
 : "${EMAIL:?EMAIL is mising}"
 : "${SSH_PRIVATE_KEY:?SSH_PRIVATE_KEY is mising}"
 
-if [ -d ~/.ssh ]; then
+if [ -f ~/.ssh/config ]; then
   # ran before
+  echo "env setup already"
   return
 fi
+echo "env setup"
 
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
