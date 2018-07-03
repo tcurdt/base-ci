@@ -9,13 +9,13 @@ fi
 : "${EMAIL:?EMAIL is mising}"
 : "${SSH_PRIVATE_KEY:?SSH_PRIVATE_KEY is mising}"
 
-DONE=~/.tmp.env
+# DONE=~/.tmp.env
 
-if [ -f $DONE ]; then
-  echo "env setup already"
-  return
-fi
-echo "env setup"
+# if [ -f $DONE ]; then
+#   echo "env setup already"
+#   return
+# fi
+# echo "env setup"
 
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
@@ -33,4 +33,4 @@ git config --global user.email "$EMAIL"
 
 # ssh -T git@github.com || exit 0
 
-touch $DONE
+# touch $DONE
