@@ -1,0 +1,10 @@
+#!/bin/sh
+
+BASE=$(dirname $0)
+
+SRC=$1
+REP=$2
+
+URI=git@bitbucket.org:${REP}.git
+
+$BASE/deploy-git $SRC $URI

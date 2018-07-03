@@ -1,1 +1,6 @@
 #!/bin/sh
+
+SRC=$1
+DST=$2
+
+rsync -az $SRC/ $DST
