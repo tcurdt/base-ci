@@ -26,9 +26,9 @@ Host *
   LogLevel ERROR
 EOL
 
-eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)" >/dev/null
 
-echo "$SSH_PRIVATE_KEY" | base64 --decode | ssh-add - >/dev/null
+echo "$SSH_PRIVATE_KEY" | base64 --decode | ssh-add - 2>/dev/null
 
 git config --global user.name "Travis CI"
 git config --global user.email "$EMAIL"
