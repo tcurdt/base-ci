@@ -7,4 +7,5 @@ REP=$2
 BASE=$(dirname $0)
 URI=git@gitlab.com:${REP}.git
 
+echo "deploy gitlab"
 $BASE/deploy-git $SRC $URI

@@ -15,5 +15,5 @@ cd $DST
 git add --all
 git commit -m "deploy"
 git push --quiet $URI
-cd -
+cd - > /dev/null
 rm -rf $DST

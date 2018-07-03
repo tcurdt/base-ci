@@ -7,4 +7,5 @@ DST=$2
 BASE=$(dirname $0)
 source $BASE/env.sh
 
+echo "deploy rsync"
 rsync -az $SRC/ $DST

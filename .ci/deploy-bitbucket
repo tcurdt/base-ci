@@ -7,4 +7,5 @@ REP=$2
 BASE=$(dirname $0)
 URI=git@bitbucket.org:${REP}.git
 
+echo "deploy bitbucket"
 $BASE/deploy-git $SRC $URI

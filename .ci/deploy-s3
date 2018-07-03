@@ -10,6 +10,8 @@ BCK=$2
 BASE=$(dirname $0)
 source $BASE/env.sh
 
+echo "deploy s3"
+
 aws s3 sync $SRC/ s3://${BCK}/
 
 # aws s3 cp --recursive $SRC/ s3://${BCK}/

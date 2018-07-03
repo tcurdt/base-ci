@@ -9,7 +9,7 @@ fi
 : "${EMAIL:?EMAIL is mising}"
 : "${SSH_PRIVATE_KEY:?SSH_PRIVATE_KEY is mising}"
 
-if [ -d "~/.ssh" ]; then
+if [ -d ~/.ssh ]; then
   # ran before
   return
 fi

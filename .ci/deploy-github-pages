@@ -9,6 +9,8 @@ BASE=$(dirname $0)
 source $BASE/env.sh
 DST=.tmp
 
+echo "deploy github pages"
+
 rm -rf $DST
 git clone --quiet --no-checkout $URI $DST
 
