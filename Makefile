@@ -23,4 +23,7 @@ release: all
 
 .PHONY: deploy
 deploy: all
-	@./.ci/deploy.sh
+	@./.ci/deploy-github       public hazelfin/deploy-test
+	@./.ci/deploy-github-pages public hazelfin/deploy-test
+	@./.ci/deploy-gitlab       public tcurdt/deploy-test
+	@./.ci/deploy-bitbucket    public tcurdt/deploy-test

@@ -1,7 +1,18 @@
-#!/bin/sh
+#!/bin/bash
+
+if [ "$CI" != "true" ]; then
+  # local deploy
+  source .credentials
+  return
+fi
 
 : "${EMAIL:?EMAIL is mising}"
 : "${SSH_PRIVATE_KEY:?SSH_PRIVATE_KEY is mising}"
+
+if [ -d "~/.ssh" ]; then
+  # ran before
+  return
+fi
 
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh

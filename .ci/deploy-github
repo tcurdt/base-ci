@@ -1,10 +1,10 @@
 #!/bin/sh
-
-BASE=$(dirname $0)
+set -e
 
 SRC=$1
 REP=$2
 
+BASE=$(dirname $0)
 URI=git@github.com:${REP}.git
 
 $BASE/deploy-git $SRC $URI

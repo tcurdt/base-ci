@@ -1,6 +1,10 @@
 #!/bin/sh
+set -e
 
 SRC=$1
 DST=$2
+
+BASE=$(dirname $0)
+source $BASE/env.sh
 
 rsync -az $SRC/ $DST

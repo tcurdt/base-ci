@@ -5,17 +5,18 @@ SRC=$1
 REP=$2
 
 URI=git@github.com:${REP}.git
-
+BASE=$(dirname $0)
+source $BASE/env.sh
 DST=.tmp
 
 rm -rf $DST
-git clone --no-checkout $URI $DST
+git clone --quiet --no-checkout $URI $DST
 
 cd $DST
 if [ "`git branch -a | grep gh-pages`" != "" ]; then
-git checkout gh-pages
+git checkout --quiet gh-pages
 else
-git checkout --orphan gh-pages
+git checkout --quiet --orphan gh-pages
 fi
 cd -
 
@@ -24,119 +25,7 @@ cp -r $SRC/ $DST
 cd $DST
 git add --all
 git commit -m "deploy"
-git push $URI
+git push --quiet $URI
 cd -
 
 rm -rf $DST
-
-# if [ "`git branch -a | grep gh-pages`" != "" ]; then
-
-  # rm -rf $DST
-  # git co --orphan gh-pages -- $DST
-  # cp -r $SRC/ $DST
-  # cd $DST
-  # git add --all
-  # git commit -m "deploy"
-  # git push $URI
-  # cd -
-  # # rm -rf $DST
-
-# else
-#   echo "no gh-pages branch"
-#   exit 1
-# fi
-
-
-
-# hugo
-# git add -A
-# msg="rebuilding site `date`"
-# if [ $# -eq 1 ]
-#   then msg="$1"
-# fi
-# git commit -m "$msg"
-
-# git push origin master
-# git subtree push --prefix=public git@github.com:spencerlyon2/hugo_gh_blog.git gh-pages
-
-
-
-# if git config remote.deploy.url > /dev/null; then
-#   echo "remote exists"
-# else
-#   git remote add deploy $URI
-# fi
-
-# mkdir -p ~/.ssh
-# chmod 700 ~/.ssh
-
-# eval "$(ssh-agent -s)"
-
-#echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-
-
-# git push deploy
-
-# git push origin `git subtree split --prefix build_folder master`:gh-pages --force
-
-# git subtree push \
-#   --prefix=public \
-#   https://${OAUTH_TOKEN}@github.com/hazelfin/deploy-test.git \
-#   origin master
-  # origin gh-pages
-
-# git push https://${OAUTH_TOKEN}@github.com/hazelfin/hazelfin.github.io.git
-
-
-# ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-
-
-# after_success:
-#   - eval "$(ssh-agent -s)" #start the ssh agent
-#   - chmod 600 .travis/deploy_key.pem # this key should have push access
-#   - ssh-add .travis/deploy_key.pem
-#   - git remote add deploy DEPLOY_REPO_URI_GOES_HERE
-#   - git push deploy
-
-
-# env:
-#   global:
-#   - 'SFTP_USER=[user]'
-#   - 'SFTP_PASSWORD=[password]'
-#   - 'SFTP_KEY=[base64-encoded-rsa-key]'
-# after_success:
-# - echo "${SFTP_KEY}" | base64 --decode >/tmp/sftp_rsa
-# - curl --ftp-create-dirs
-#        -T filename
-#        --key /tmp/sftp_rsa
-#        sftp://${SFTP_USER}:${SFTP_PASSWORD}@example.com/directory/filename
-
-
-# $ travis encrypt-file super_secret.txt
-# encrypting super_secret.txt for rkh/travis-encrypt-file-example
-# storing result as super_secret.txt.enc
-# storing secure env variables for decryption
-
-# openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_iv -in super_secret.txt.enc -out super_secret.txt -d
-# Bash
-
-# $ travis encrypt-file super_secret.txt --add
-# encrypting super_secret.txt for rkh/travis-encrypt-file-example
-# storing result as super_secret.txt.enc
-# storing secure env variables for decryption
-
-# Make sure to add super_secret.txt.enc to the git repository.
-# Make sure not to add super_secret.txt to the git repository.
-# Commit all changes to your .travis.yml.
-
-
-# $ tar cvf secrets.tar foo bar
-# $ travis encrypt-file secrets.tar
-# $ vi .travis.yml
-# $ git add secrets.tar.enc .travis.yml
-# $ git commit -m 'use secret archive'
-# $ git push
-
-# before_install:
-#   - openssl aes-256-cbc -K $encrypted_5880cf525281_key -iv $encrypted_5880cf525281_iv -in secrets.tar.enc -out secrets.tar -d
-#   - tar xvf secrets.tar

@@ -1,7 +1,14 @@
 #!/bin/sh
+set -e
+
+: "${AWS_ACCESS_KEY_ID:?AWS_ACCESS_KEY_ID is mising}"
+: "${AWS_SECRET_ACCESS_KEY:?AWS_SECRET_ACCESS_KEY is mising}"
 
 SRC=$1
 BCK=$2
+
+BASE=$(dirname $0)
+source $BASE/env.sh
 
 aws s3 sync $SRC/ s3://${BCK}/
 

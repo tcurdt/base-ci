@@ -1,11 +1,17 @@
 #!/bin/bash
 set -e
 
+exit 1
+
 BASE=$(dirname $0)
 
 if [ "$CI" == "true" ]; then
+
+  #if [ "$TRAVIS_BRANCH" == "master" ]
+  #if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+  #: "${EMAIL:?EMAIL is mising}"
+
   echo "continous integration"
-  #if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   source $BASE/env.sh
 else
   echo "local"
@@ -14,17 +20,10 @@ fi
 
 SRC=public
 
-echo "github:"
-$BASE/deploy-github       $SRC hazelfin/deploy-test
-
-echo "github pages:"
-$BASE/deploy-github-pages $SRC hazelfin/deploy-test
-
-echo "gitlab:"
-$BASE/deploy-gitlab       $SRC tcurdt/deploy-test
-
-echo "bitbucket:"
-$BASE/deploy-bitbucket    $SRC tcurdt/deploy-test
+# $BASE/deploy-github       $SRC hazelfin/deploy-test
+# $BASE/deploy-github-pages $SRC hazelfin/deploy-test
+# $BASE/deploy-gitlab       $SRC tcurdt/deploy-test
+# $BASE/deploy-bitbucket    $SRC tcurdt/deploy-test
 # $BASE/deploy-rsync        $SRC tcurdt@vafer.org:/home/tcurdt/deploy-test
 # $BASE/deploy-s3           $SRC deploy-7d50e3
 

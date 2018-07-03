@@ -3,14 +3,17 @@ set -e
 
 SRC=$1
 URI=$2
+
+BASE=$(dirname $0)
+source $BASE/env.sh
 DST=.tmp
 
 rm -rf $DST
-git clone $URI $DST
+git clone --quiet $URI $DST
 cp -r $SRC/ $DST
 cd $DST
 git add --all
 git commit -m "deploy"
-git push $URI
+git push --quiet $URI
 cd -
 rm -rf $DST

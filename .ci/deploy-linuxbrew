@@ -1,3 +1,6 @@
 #!/bin/sh
+set -e
 
-echo "linuxbrew"
+echo "not implemented"
+
+exit 1

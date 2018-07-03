@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+echo "not implemented"
+
+exit 1
+
+# - curl --ftp-create-dirs
+#        -T filename
+#        --key /tmp/sftp_rsa
+#        sftp://${SFTP_USER}:${SFTP_PASSWORD}@example.com/directory/filename
