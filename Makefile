@@ -16,6 +16,11 @@ dist/$(NAME)-$(VERSION).tgz: public/index.html
 	@mkdir -p dist
 	@tar czf $@ public
 
+.PHONY: release
+release: all
+	@git tag -a $(VERSION) -m "releasing $(VERSION)"
+	@git push --tags origin master
+
 .PHONY: deploy
 deploy: all
 	@./.ci/deploy.sh

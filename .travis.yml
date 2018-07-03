@@ -2,6 +2,27 @@ os: linux
 language: c
 sudo: false
 
+script:
+  - make
+
+branches:
+  only:
+    - master
+    - /^v\d+\.\d+.\d+$/
+
+notifications:
+  email:
+    on_success: false
+    on_failure: always
+
+deploy:
+  provider: script
+  script:
+  - make deploy
+  on:
+    branch: master
+    tags: true
+
 # before_install:
 #   - .ci/env.sh
 #   - pip install --local awscli
@@ -27,26 +48,6 @@ sudo: false
 #   # - curl https://htmltest.wjdp.uk | bash -s -- -b tmp
 #   - curl -sL `curl -s https://api.github.com/repos/wjdp/htmltest/releases/latest | jq -r '.assets[] | select(.name | test("linux_amd64.tar.gz"; "ix")) | .browser_download_url'` | tar -xz
 #   - curl -sL `curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.assets[] | select(.name | test("linux-64bit.tar.gz"; "ix")) | .browser_download_url'` | tar -xz
-
-script:
-  - make
-
-branches:
-  only:
-    - master
-
-notifications:
-  email:
-    on_success: false
-    on_failure: always
-
-deploy:
-  provider: script
-  script:
-  - make deploy
-  on:
-    branch: master
-    tags: true
 
 
 # deploy:
