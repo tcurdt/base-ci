@@ -22,11 +22,13 @@ chmod 700 ~/.ssh
 cat > ~/.ssh/config <<EOL
 Host *
   StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR
 EOL
 
 eval "$(ssh-agent -s)"
 
-echo "$SSH_PRIVATE_KEY" | base64 --decode | ssh-add -
+echo "$SSH_PRIVATE_KEY" | base64 --decode | ssh-add - >/dev/null
 
 git config --global user.name "Travis CI"
 git config --global user.email "$EMAIL"

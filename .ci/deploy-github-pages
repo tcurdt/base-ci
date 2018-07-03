@@ -20,7 +20,7 @@ git checkout --quiet gh-pages
 else
 git checkout --quiet --orphan gh-pages
 fi
-cd -
+cd - > /dev/null
 
 cp -r $SRC/ $DST
 
@@ -28,6 +28,6 @@ cd $DST
 git add --all
 git commit -m "deploy"
 git push --quiet $URI
-cd -
+cd - > /dev/null
 
 rm -rf $DST
