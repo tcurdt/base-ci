@@ -13,9 +13,16 @@ fi
 
 SRC=public
 
-$BASE/deploy-github-pages $SRC hazelfin/deploy-test
-$BASE/deploy-gitlab       $SRC tcurdt/deploy-test
+echo "github:"
 $BASE/deploy-github       $SRC hazelfin/deploy-test
+
+echo "github pages:"
+$BASE/deploy-github-pages $SRC hazelfin/deploy-test
+
+echo "gitlab:"
+$BASE/deploy-gitlab       $SRC tcurdt/deploy-test
+
+echo "bitbucket:"
 $BASE/deploy-bitbucket    $SRC tcurdt/deploy-test
 # $BASE/deploy-rsync        $SRC tcurdt@vafer.org:/home/tcurdt/deploy-test
 # $BASE/deploy-s3           $SRC deploy-7d50e3
@@ -29,4 +36,4 @@ SRC=dist
 # $BASE/deploy-homebrew        -v $TAG $SRC/*.tgz
 # $BASE/deploy-linuxbrew       -v $TAG $SRC/*.tgz
 
-echo "deployed"
+echo "done"
