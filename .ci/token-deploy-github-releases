@@ -14,12 +14,9 @@ GIT_SHA=`git rev-parse HEAD 2>/dev/null` || { echo "no git repo"; exit 2; }
 GIT_TAG=`git describe --exact-match $SHA 2>/dev/null` || { echo "not a tag"; exit 3; }
 
 echo "tag $GIT_TAG == $TAG"
+echo "path=$PATH"
 
-
-mkdir -p bin
-curl -sL `curl -s https://api.github.com/repos/tcnksm/ghr/releases/latest | jq -r '.assets[] | select(.name | test("linux_amd64.tar.gz"; "ix")) | .browser_download_url'` | tar -xz --strip-components=1 -C bin
-
-./bin/ghr $TAG $DIR/
+ghr $TAG $DIR/
 
 # https://github.com/itchio/gothub
 # https://github.com/tcnksm/ghr
