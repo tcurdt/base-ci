@@ -4,6 +4,7 @@ set -e
 BASE=$(dirname $0)
 source $BASE/env.sh
 PATH=$PATH:$BASE/bin
+echo $PATH
 
 : "${GITHUB_TOKEN:?GITHUB_TOKEN is mising}"
 [[ "$(command -v ghr)" ]] || { echo "ghr is not installed" 1>&2 ; exit 1; }
