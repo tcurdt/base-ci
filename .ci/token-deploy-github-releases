@@ -3,6 +3,7 @@ set -e
 
 BASE=$(dirname $0)
 source $BASE/env.sh
+PATH=$PATH:$BASE/bin
 
 : "${GITHUB_TOKEN:?GITHUB_TOKEN is mising}"
 [[ "$(command -v ghr)" ]] || { echo "ghr is not installed" 1>&2 ; exit 1; }
@@ -14,7 +15,6 @@ GIT_SHA=`git rev-parse HEAD 2>/dev/null` || { echo "no git repo"; exit 2; }
 GIT_TAG=`git describe --exact-match $SHA 2>/dev/null` || { echo "not a tag"; exit 3; }
 
 echo "tag $GIT_TAG == $TAG"
-echo "path=$PATH"
 
 ghr $TAG $DIR/
 
