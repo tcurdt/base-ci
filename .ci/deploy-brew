@@ -1,0 +1,27 @@
+#!/bin/bash
+set -e
+
+echo "not implemented"
+
+exit 1
+
+# class Tempered < Formula
+#   desc "A dead-simple templating utility for simple shell interpolation"
+#   homepage "https://github.com/ChrisPenner/tempered"
+#   url "https://github.com/ChrisPenner/tempered/releases/download/v0.1.0/tempered-v0.1.0-osx.tar.gz"
+#   sha256 "9241be80db128ddcfaf9d2fc2520d22aab47935bcabc117ed874c627c0e1e0be"
+
+#   bottle :unneeded
+
+#   def install
+#     bin.install "tempered"
+#   end
+
+#   test do
+#     system "#{bin}/tempered"
+#   end
+# end
+
+# https://kev.inburke.com/kevin/install-homebrew-go/
+# https://chrispenner.ca/posts/homebrew-haskell
+# shasum -a 256 <filename>

@@ -4,16 +4,18 @@ set -e
 : "${AWS_ACCESS_KEY_ID:?AWS_ACCESS_KEY_ID is mising}"
 : "${AWS_SECRET_ACCESS_KEY:?AWS_SECRET_ACCESS_KEY is mising}"
 
+[[ "$(command -v aws)" ]] || { echo "aws cli is not installed" 1>&2 ; exit 1; }
+# [[ "$(command -v s3cmd)" ]] || { echo "s3cmd is not installed" 1>&2 ; exit 1; }
+
 SRC=$1
 BCK=$2
 
 BASE=$(dirname $0)
 source $BASE/env.sh
 
-echo "deploy s3"
+echo "deploying to s3"
 
 aws s3 sync $SRC/ s3://${BCK}/
-
 # aws s3 cp --recursive $SRC/ s3://${BCK}/
 
 # s3cmd put --recursive \

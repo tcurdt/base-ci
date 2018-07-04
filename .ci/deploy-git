@@ -13,7 +13,7 @@ git clone --quiet $URI $DST
 cp -r $SRC/ $DST
 cd $DST
 git add --all
-git commit -m "deploy"
+git commit -m "CI deployment"
 git push --quiet $URI
 cd - > /dev/null
 rm -rf $DST

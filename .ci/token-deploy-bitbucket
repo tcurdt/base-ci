@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+: "${BITBUCKET_USER:?BITBUCKET_USER is mising}"
+: "${BITBUCKET_TOKEN:?BITBUCKET_TOKEN is mising}"
+
+SRC=$1
+REP=$2
+
+BASE=$(dirname $0)
+URI=https://${BITBUCKET_USER}:${BITBUCKET_TOKEN}@bitbucket.org/${REP}.git
+
+echo "deploying to bitbucket"
+$BASE/deploy-git $SRC $URI

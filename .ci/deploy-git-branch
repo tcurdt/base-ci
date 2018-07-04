@@ -2,23 +2,21 @@
 set -e
 
 SRC=$1
-REP=$2
+URI=$2
+BRANCH=gh-pages
 
-URI=git@github.com:${REP}.git
 BASE=$(dirname $0)
 source $BASE/env.sh
 DST=.tmp
-
-echo "deploy github pages"
 
 rm -rf $DST
 git clone --quiet --no-checkout $URI $DST
 
 cd $DST
-if [ "`git branch -a | grep gh-pages`" != "" ]; then
-git checkout --quiet gh-pages
+if [ "`git branch -a | grep $BRANCH`" != "" ]; then
+git checkout --quiet $BRANCH
 else
-git checkout --quiet --orphan gh-pages
+git checkout --quiet --orphan $BRANCH
 fi
 cd - > /dev/null
 
@@ -26,7 +24,7 @@ cp -r $SRC/ $DST
 
 cd $DST
 git add --all
-git commit -m "deploy"
+git commit -m "CI deployment"
 git push --quiet $URI
 cd - > /dev/null
 

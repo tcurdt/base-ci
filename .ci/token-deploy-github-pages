@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+: "${GITHUB_TOKEN:?GITHUB_TOKEN is mising}"
+
+SRC=$1
+REP=$2
+
+BASE=$(dirname $0)
+URI=https://${GITHUB_TOKEN}@github.com/${REP}.git
+
+echo "deploying to github pages"
+$BASE/deploy-git-branch $SRC $URI

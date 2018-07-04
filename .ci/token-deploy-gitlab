@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+: "${GITLAB_USER:?GITLAB_USER is mising}"
+: "${GITLAB_TOKEN:?GITLAB_TOKEN is mising}"
+
+SRC=$1
+REP=$2
+
+BASE=$(dirname $0)
+URI=https://${GITLAB_USER}:${GITLAB_TOKEN}@gitlab.com/${REP}.git
+
+echo "deploying to gitlab"
+$BASE/deploy-git $SRC $URI

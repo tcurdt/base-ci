@@ -7,5 +7,5 @@ REP=$2
 BASE=$(dirname $0)
 URI=git@github.com:${REP}.git
 
-echo "deploy github"
-$BASE/deploy-git $SRC $URI
+echo "deploying to github pages"
+$BASE/deploy-git-branch $SRC $URI

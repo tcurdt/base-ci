@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+: "${GITHUB_TOKEN:?GITHUB_TOKEN is mising}"
+[[ "$(command -v ghr)" ]] || { echo "ghr is not installed" 1>&2 ; exit 1; }
+
+$TAG=$1
+$DIR=$2
+
+GIT_SHA=`git rev-parse HEAD 2>/dev/null` || { echo "no git repo"; exit 2; }
+GIT_TAG=`git describe --exact-match $SHA 2>/dev/null` || { echo "not a tag"; exit 3; }
+
+echo "tag $GIT_TAG == $TAG"
+
+./bin/ghr $TAG $DIR/
+
+# https://github.com/itchio/gothub
+# https://github.com/tcnksm/ghr
+# https://github.com/tcnksm/ghr/releases/download/v0.10.0/ghr_v0.10.0_linux_amd64.tar.gz
+
+# https://gist.github.com/stefanbuck/ce788fee19ab6eb0b4447a85fc99f447
+# https://blog.github.com/2013-09-25-releases-api-preview/

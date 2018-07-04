@@ -23,7 +23,18 @@ release: all
 
 .PHONY: deploy
 deploy: all
-	@./.ci/deploy-github       public hazelfin/deploy-test
-	@./.ci/deploy-github-pages public hazelfin/deploy-test
-	@./.ci/deploy-gitlab       public tcurdt/deploy-test
-	@./.ci/deploy-bitbucket    public tcurdt/deploy-test
+	@./.ci/token-deploy-github-releases $(VERSION) dist
+	# @./.ci/token-deploy-homebrew deploy-test git@github.com:tcurdt/homebrew-tap.git
+
+	# @./.ci/ssh-deploy-bitbucket    public tcurdt/deploy-test
+	# @./.ci/ssh-deploy-github       public hazelfin/deploy-test
+	# @./.ci/ssh-deploy-github-pages public hazelfin/deploy-test
+	# @./.ci/ssh-deploy-gitlab       public tcurdt/deploy-test
+	# @./.ci/ssh-deploy-rsync        public foo@server.com:/dir
+	# @./.ci/ssh-deploy-sftp         public foo@server.com:/dir
+
+	# @./.ci/token-deploy-bitbucket    public tcurdt/deploy-test
+	# @./.ci/token-deploy-github       public hazelfin/deploy-test
+	# @./.ci/token-deploy-github-pages public hazelfin/deploy-test
+	# @./.ci/token-deploy-gitlab       public tcurdt/deploy-test
+	# @./.ci/token-deploy-s3           public bucket
