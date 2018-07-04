@@ -3,10 +3,7 @@ set -e
 
 BASE=$(dirname $0)
 source $BASE/env.sh
-
 export PATH=$PATH:`pwd`/bin
-ls -la bin/ghr
-type ghr
 
 : "${GITHUB_TOKEN:?GITHUB_TOKEN is mising}"
 [[ "$(command -v ghr)" ]] || { echo "ghr is not installed" 1>&2 ; exit 1; }
