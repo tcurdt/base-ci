@@ -2,8 +2,6 @@ os: linux
 language: c
 sudo: false
 
-install:
-  - ./.ci/install.sh
 script:
   - make
 
@@ -16,6 +14,9 @@ notifications:
   email:
     on_success: false
     on_failure: always
+
+before_deploy:
+  - ./.ci/install.sh
 
 deploy:
   provider: script

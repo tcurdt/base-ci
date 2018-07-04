@@ -5,10 +5,11 @@ BASE=$(dirname $0)
 source $BASE/env.sh
 
 export PATH=$PATH:$BASE/bin
-ls -la bin/ghr
+echo $PATH
 pwd
 ls -la bin
-echo $PATH
+ls -la bin/ghr
+type ghr
 
 
 : "${GITHUB_TOKEN:?GITHUB_TOKEN is mising}"
