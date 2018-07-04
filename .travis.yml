@@ -19,6 +19,7 @@ before_deploy:
   - ./.ci/install.sh
 
 deploy:
+  skip_cleanup: true
   provider: script
   script:
   - make deploy
