@@ -1,12 +1,13 @@
 #!/bin/bash
 set -e
 
+BASE=$(dirname $0)
+source $BASE/env.sh
+
 SRC=$1
 URI=$2
 BRANCH=gh-pages
 
-BASE=$(dirname $0)
-source $BASE/env.sh
 DST=.tmp
 
 rm -rf $DST
