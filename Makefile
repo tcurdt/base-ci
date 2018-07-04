@@ -19,7 +19,7 @@ dist/$(NAME)-$(VERSION).tgz: public/index.html
 .PHONY: release
 release: all
 	@git tag -a $(VERSION) -m "releasing $(VERSION)"
-	@git push --tags origin master
+	@git push --follow-tags origin master
 
 .PHONY: deploy
 deploy: all
